@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>Dodaj firmę   <a href="/firmy"><button class="btn btn-success add-button">Wróć</button></a></h2>
+<p> Dodaną firmę możesz powiązać z domeną </p>
+
+
+		    {{form_start(form_dodaj_firma)}}
+		    {{form_widget(form_dodaj_firma)}}
+		    {{form_end(form_dodaj_firma)}}
+
+
+
+{% endblock %}

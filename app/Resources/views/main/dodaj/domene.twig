@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<h2>Dodaj domene   <a href="/domeny"><button class="btn btn-success add-button">Wróć</button></a></h2>
+
+
+
+{{form_start(form_dodaj_domene)}}
+{{form_widget(form_dodaj_domene)}}
+{{form_end(form_dodaj_domene)}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-sm-12">Dodaj domene do serwera</div>
+		    {{form_start(form_dodaj_domene)}}
+		    {{form_widget(form_dodaj_domene)}}
+		    {{form_end(form_dodaj_domene)}}
+		</div>
+   	</div>
+</div>
+
+
+
+{% endblock %}

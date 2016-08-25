@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <div class="wrapper">
+        {% block wrapper %}
+
+
+
+            <div class="content-wrapper">
+            {% block content %}
+                {% block flash_messages %}
+                    {{ _entity_config is defined ? include(_entity_config.templates.flash_messages) }}
+                {% endblock flash_messages %}
+
+                <section class="content-header">
+                {% block content_header %}
+                    <h1 class="title">{% block content_title %}{% endblock %}</h1>
+                {% endblock content_header %}
+                </section>
+
+                <section id="main" class="content">
+                    {% block main %}{% endblock %}
+                </section>
+            {% endblock content %}
+            </div>
+        {% endblock wrapper %}
+        </div>
+
+        {% block body_javascript %}{% endblock body_javascript %}
+
+        {% for js_asset in easyadmin_config('design.assets.js') %}
+            <script src="{{ asset(js_asset) }}"></script>
+        {% endfor %}
+
+
+
+{% endblock %}

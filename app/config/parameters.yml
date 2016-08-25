@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: janusz_symfony
+    database_user: janusz_symfony
+    database_password: ObbWjrr5Le
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 5bdaa45e842de5f1ac8c53bc44be8c53c938a6c9

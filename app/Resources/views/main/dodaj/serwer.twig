@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>Dodaj serwer   <a href="/serwery"><button class="btn btn-success add-button">Wróć</button></a></h2>
+<p> Powiąż relacją serwer i domenę</p>
+
+
+{{form_start(form_dodaj_serwer)}}
+{{form_widget(form_dodaj_serwer)}}
+{{form_end(form_dodaj_serwer)}}
+
+
+{% endblock %}

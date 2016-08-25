@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if komunikat is defined %}
+  {% if komunikat == "added" %}
+    <div class="alert alert-success">Dodano poprawnie</div>
+  {% endif %}
+  {% if komunikat == "edited" %}
+    <div class="alert alert-success">Dane zostały zmienione</div>
+  {% endif %}
+  {% if komunikat == "error" %}
+  <div class="alert alert-danger">Wystapił bład</div>
+  {% endif %}
+{% endif %}
+
+<h2>Szczegółowe informacje  <a href="/domeny"><button class="btn btn-success add-button">Wróć</button></a><a href="/domeny"><button class="btn btn-primary add-button">Aktualizuj informacje</button></a></h2>
+  <p>Poniżej znajduja się szczegołowe informacje domeny z wykorzystaniem API WhoIs. Dane sa aktualizowane okresowo.</p>
+  <p>Przycisk 'Aktualizuj informacje' zaktualizuje pola 'Domena aktywna' , 'Data wygaśnięcia' a także pole 'Zebrane dane'</p>
+  <table class="table table-hover">
+
+
+    {% for domena in lista_domen %}
+      <tr>
+        <td>Id domeny w bazie</td>
+        <td>{{domena.id}}</td>
+      </tr>
+      <tr>
+        <td>Nazwa domeny</td>
+        <td>{{domena.nazwa}}</td>
+      </tr><tr>
+        <td>Krótki opis</td>
+        <td>{{domena.opis}}</td>
+      </tr><tr>
+        <td>Nazwa firmy do której domena została przypisana</td>
+        <td>{{domena.FirmaNazwa}}</td>
+      </tr><tr>
+        <td>Nazwa serwera</td>
+        <td>{{domena.SerwerNazwa}}</td>
+      </tr><tr>
+        <td>Data wygaśnięcia domeny</td>
+        <td>{{domena.dataWyg|date('F j, Y, g:i a')}}</td>
+      </tr><tr>
+        <td>Domena aktywna</td>
+        <td>
+          {% if domena.aktywna == 1 %}
+            TAK
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td>Zebrane dane</td>
+        <td>
+          {{domena.inne}}
+        </td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}

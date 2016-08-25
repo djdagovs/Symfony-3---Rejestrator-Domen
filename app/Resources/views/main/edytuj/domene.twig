@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>Edytuj domene   <a href="/domeny"><button class="btn btn-success add-button">Wróć</button></a></h2>
+
+{{form_start(form_edit_domena)}}
+{{form_widget(form_edit_domena)}}
+{{form_end(form_edit_domena)}}
+
+
+{% endblock %}

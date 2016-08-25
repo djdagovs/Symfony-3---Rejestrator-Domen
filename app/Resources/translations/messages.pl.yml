@@ -1,0 +1,20 @@
+# app/Resources/translations/messages.es.yml
+app.menu.users: Użytkownicy
+app.user.username: Nazwa użytkownika
+app.user.email: Adres Email
+app.user.password: Hasło
+app.user.enabled: Aktywny
+app.user.roles: Prawa
+Username: Nazwa użytkownika
+Email: Adres Email
+Actions: Dostępne opcje
+Edit: Edytuj
+Delete: Usuń
+Users: Użytkownicy
+Search: Szukaj
+add: Dodaj
+Add Users: Dodaj użytkownika
+Cancel: Anuluj
+app.action.search: Szukaj
+action.delete: Usuń
+action.edit: Edytuj

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if komunikat is defined %}
+  {% if komunikat == "added" %}
+    <div class="alert alert-success">Dodano poprawnie</div>
+  {% endif %}
+  {% if komunikat == "edited" %}
+    <div class="alert alert-success">Dane zostały zmienione</div>
+  {% endif %}
+  {% if komunikat == "deleted" %}
+    <div class="alert alert-success">Serwer została usunięty</div>
+  {% endif %}
+  {% if komunikat == "error" %}
+  <div class="alert alert-danger">Wystapił bład</div>
+  {% endif %}
+{% endif %}
+{% if lista_serwer is defined %}
+<h2>Lista serwerów
+<a href="/dodaj/serwer"><button class="btn btn-success add-button">Dodaj serwer</button></a>
+</h2>
+  <p>Poniżej znajduje się lista dodanych przez Państwa serwerów.</p>
+  <p>Klikajac przycisk 'Direct Admin' w opcjach wybranego serwera zaktualizuja Państwo domeny tego serwera.</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nazwa</th>
+        <th>Opis</th>
+        <th>Url</th>
+        <th>Opcje</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for serwer in lista_serwer %}
+      <tr>
+        <td>{{serwer.id}}</td>
+        <td>{{serwer.nazwa}}</td>
+        <td>{{serwer.opis}}</td>
+        <td>{{serwer.url}}</td>
+
+        <td>
+          <a href="/serwer/info/{{serwer.id}}"><button type="button" class="btn btn-info opc-btn">Info</button></a>
+          <a href="/serwer/edit/{{serwer.id}}"><button type="button" class="btn btn-success opc-btn">Edytuj</button></a>
+          <a href="/serwer/delete/{{serwer.id}}"><button type="button" class="btn btn-danger opc-btn">Usuń</button></a>
+          <a href="/serwer/direct-admin/{{serwer.id}}"><button type="button" class="btn btn-default opc-btn">DirectAdmin</button></a>
+        </td>
+      </tr>
+      {% endfor %}
+{% endif %}
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}

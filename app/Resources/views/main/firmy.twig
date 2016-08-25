@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if komunikat is defined %}
+	{% if komunikat == "added" %}
+		<div class="alert alert-success">Dodano poprawnie</div>
+	{% endif %}
+	{% if komunikat == "edited" %}
+		<div class="alert alert-success">Dane zostały zmienione</div>
+	{% endif %}
+	{% if komunikat == "deleted" %}
+		<div class="alert alert-success">Firma została usunięta</div>
+	{% endif %}
+	{% if komunikat == "error" %}
+	<div class="alert alert-danger">Wystapił bład</div>
+	{% endif %}
+{% endif %}
+{% if lista_firm is defined %}
+<h2>Lista firm 	<a href="/dodaj/firme"><button class="btn btn-success add-button">Dodaj firmę</button></a></h2>
+  <p>Poniżej znajduje się lista dodanych przez Państwa firm.</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nazwa</th>
+        <th>Telefon</th>
+        <th>Opcje</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for firma in lista_firm %}
+      <tr>
+      	<td>{{firma.id}}</td>
+        <td>{{firma.nazwa}}</td>
+        <td>{{firma.tel}}</td>
+        <td>
+        	<a href="/firma/info/{{firma.id}}"><button type="button" class="btn btn-info opc-btn">Info</button></a>
+        	<a href="/firma/edit/{{firma.id}}"><button type="button" class="btn btn-success opc-btn">Edytuj</button></a>
+        	<a href="/firma/delete/{{firma.id}}"><button type="button" class="btn btn-danger opc-btn">Usuń</button></a>
+        </td>
+      </tr>
+      {% endfor %}
+{% endif %}
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}

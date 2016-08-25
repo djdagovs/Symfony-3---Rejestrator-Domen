@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+  <div class="login">
+  	<h1 class="login-heading">
+      <strong>Zarejestruj się.</strong>Wpisz dane poniżej.</h1>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+
+        <input type="submit" id="register-btn" value="Zarejestruj" class="btn btn--right" />
+
+{{ form_end(form) }}
+
+{% endblock fos_user_content %}

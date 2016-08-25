@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if komunikat is defined %}
+  {% if komunikat == "added" %}
+    <div class="alert alert-success">Dodano poprawnie</div>
+  {% endif %}
+  {% if komunikat == "edited" %}
+    <div class="alert alert-success">Dane zostały zmienione</div>
+  {% endif %}
+  {% if komunikat == "error" %}
+  <div class="alert alert-danger">Wystapił bład</div>
+  {% endif %}
+{% endif %}
+
+
+{% if lista_firm is defined %}
+<h2>Szczegółowe informacje o firme <a href="/firmy"><button class="btn btn-success add-button">Wróć</button></a></h2>
+  <p>Poniżej znajduje się dane dotyczace firmy/p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <tbody>
+
+    {% for firma in lista_firm %}
+
+
+      <tr>
+        <td>Id firmy w bazie</td>
+        <td>{{firma.id}}</td>
+      </tr>
+      <tr>
+        <td>Nazwa firmy</td>
+        <td>{{firma.nazwa}}</td>
+      </tr>
+      <tr>
+        <td>Adres firmy</td>
+        <td>{{firma.adres}}</td>
+      </tr>
+      <tr>
+        <td>Nip</td>
+        <td>{{firma.nip}}</td>
+      </tr>
+      <tr>
+        <td>Regon</td>
+        <td>{{firma.regon}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{firma.email}}</td>
+      </tr>
+      <tr>
+        <td>Numer Telefonu</td>
+        <td>{{firma.tel}}</td>
+      </tr>
+      <tr>
+        <td>Fax</td>
+        <td>{{firma.fax}}</td>
+      </tr>
+      <tr>
+        <td>Inne</td>
+        <td>{{firma.inne}}</td>
+      </tr>
+      {% endfor %}
+{% endif %}
+
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}

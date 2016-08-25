@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			     	<h1 class="login-heading"><strong>Witam.</strong>Miłego korzystania ;) .</h1>
+                	<p> Zalogowano jako <b> {{ app.user.username }} </b> {% if is_admin == 1  %}  - <b>ADMINISTRATOR</b>{% endif %}</p>
+                	<p> Twój adres email do powiadomień to: <b> {{ app.user.email }} </b></p>
+                  {% if is_admin == 0 %}
+                    <p>W celu zmiany adresu email skontaktuj się z administratorem</p>
+                  {% endif %}
+               {% else %}
+               	<p><h1 class="login-heading"><strong>Witam.</strong>Aby skorzystać z aplikacji proszę się <a href="/login">zalogować</a>.</h1></p>
+               	<p><h1 class="login-heading">Albo skorzystać z <b><a href="/register">formularza rejestracyjnego</a></b></h1></p>
+           {% endif %}
+		</div>
+    </div>
+</div>
+
+{% endblock %}

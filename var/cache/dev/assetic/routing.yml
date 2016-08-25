@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /home/janusz/domains/janusz.interaktywni.pro/public_html/listadomen/app/config/routing_dev.yml

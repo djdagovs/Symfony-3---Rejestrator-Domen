@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if komunikat is defined %}
+  {% if komunikat == "added" %}
+    <div class="alert alert-success">Dodano poprawnie</div>
+  {% endif %}
+  {% if komunikat == "edited" %}
+    <div class="alert alert-success">Dane zostały zmienione</div>
+  {% endif %}
+  {% if komunikat == "error" %}
+  <div class="alert alert-danger">Wystapił bład</div>
+  {% endif %}
+{% endif %}
+
+
+{% if lista_serwer is defined %}
+<h2>Szczegółowe informacje o serwerze <a href="/serwery"><button class="btn btn-success add-button">Wróć</button></a></h2>
+  <p>Poniżej znajduje się dane dotyczace wybranego serwera</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <tbody>
+
+    {% for serwer in lista_serwer %}
+
+
+      <tr>
+        <td>Id serwera w bazie</td>
+        <td>{{serwer.id}}</td>
+      </tr>
+      <tr>
+        <td>Nazwa serwera</td>
+        <td>{{serwer.nazwa}}</td>
+      </tr>
+      <tr>
+        <td>Opis serwera</td>
+        <td>{{serwer.opis}}</td>
+      </tr>
+      <tr>
+        <td>Ścieżka url serwera</td>
+        <td>{{serwer.url}}</td>
+      </tr>
+      <tr>
+        <td>Api Login</td>
+        <td>{{serwer.apiLogin}}</td>
+      </tr>
+      <tr>
+        <td>Api Pass</td>
+        <td>{{serwer.apiPass}}</td>
+      </tr>
+      {% endfor %}
+{% endif %}
+
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}

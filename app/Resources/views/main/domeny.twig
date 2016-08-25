@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if komunikat is defined %}
+	{% if komunikat == "added" %}
+		<div class="alert alert-success">Dodano poprawnie</div>
+	{% endif %}
+	{% if komunikat == "edited" %}
+		<div class="alert alert-success">Dane zostały zmienione</div>
+	{% endif %}
+	{% if komunikat == "deleted" %}
+		<div class="alert alert-success">Domena została usunięta</div>
+	{% endif %}
+	{% if komunikat == "error" %}
+	<div class="alert alert-danger">Wystapił bład</div>
+	{% endif %}
+{% endif %}
+{% if lista_domen is defined %}
+<h2>Lista domen 	<a href="/dodaj/domene"><button class="btn btn-success add-button">Dodaj domene</button></a><a href="/widoki/pogrupowane-domeny"><button class="btn btn-primary add-button">Pogrupowane domeny</button></a></h2>
+  <p>Poniżej znajduje się lista dodanych przez Państwa domen.</p>
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nazwa</th>
+        <th>Opis</th>
+        <th>Firma</th>
+        <th>Serwer</th>
+        <th>Konto</th>
+        <th>Data </th>
+        <th>Status</th>
+        <th>Opcje</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for domena in lista_domen %}
+      <tr>
+      	<td>{{domena.id}}</td>
+        <td>{{domena.nazwa}}</td>
+        <td>{{domena.opis}}</td>
+        <td>{{domena.FirmaNazwa}}</td>
+        <td>{{domena.SerwerNazwa}}</td>
+        <td>{{domena.KontoNazwa}}</td>
+        <td>{{domena.dataWyg|date('F j, Y, g:i a')}}</td>
+        <td>
+        {% if domena.aktywna == 1 %}
+          Aktywna
+        {% else %}
+          Nie aktywna
+        {% endif %}
+        </td>
+        <td>
+        	<a href="/domeny/info/{{domena.id}}"><button type="button" class="btn btn-info opc-btn">Info</button></a>
+        	<a href="/domeny/edit/{{domena.id}}"><button type="button" class="btn btn-success opc-btn">Edytuj</button></a>
+        	<a href="/domeny/delete/{{domena.id}}"><button type="button" class="btn btn-danger opc-btn">Usuń</button></a>
+        </td>
+      </tr>
+      {% endfor %}
+{% endif %}
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock %}

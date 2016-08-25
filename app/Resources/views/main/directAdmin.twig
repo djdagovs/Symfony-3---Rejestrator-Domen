@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>Lista wykrytych domen przypisanych do serwera <a href="/serwery"><button class="btn btn-default add-button">Wstecz</button></a></h2>
+
+
+ <ul class="lista_domen">
+    {% for domena in dane %}
+      {% for v in domena %}
+        <li>{{ v }}</li>
+      {% endfor %}
+    {% endfor %}
+</ul>
+{% if dane.brak is defined %}
+  <h2>BRAK NOWYCH DOMEN DLA TEGO SERWERA</h2>
+{% else %}
+<h2>Dodać domeny do systemu ? </h2>
+<p>Wybierz firmę z jaką zostaną powiązane domeny</p>
+{{form_start(form_dodaj_domeny)}}
+{{form_widget(form_dodaj_domeny)}}
+{{form_end(form_dodaj_domeny)}}
+{% endif %}
+{% endblock %}

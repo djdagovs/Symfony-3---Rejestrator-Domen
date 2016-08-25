@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<p><h2>Lista pogrupowanych domen według serwerów</h2></p>
+<p>
+<a href="/dodaj/domene"><button class="btn btn-success add-button">Dodaj domene</button></a>
+<a href="/domeny"><button class="btn btn-primary add-button">Wróć</button></a>
+</p>
+
+ <ul class="lista_serwerow">
+    {% for key,serwer in pogrupowane %}
+    	<li>{{key}}</li>
+    	<ul>{% for domena in serwer %}<li>{{domena}}</li>{% endfor %}</ul>
+    {% endfor %}
+</ul>
+
+{% endblock %}
